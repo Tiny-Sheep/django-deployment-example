@@ -1,0 +1,27 @@
+{% extends 'auth_app/base.html' %}
+{% load staticfiles %}
+
+
+{% block body_block %}
+
+<div class="jumbotron">
+
+  {% if registered %}
+  <h1>Thanks you for Registering</h1>
+
+  {% else %}
+  <h1>Register here</h1>
+  <h3>Fill out form here: </h3>
+
+  <form method="post" enctype="multipart/form-data" >
+      {% csrf_token %}
+      {{user_form.as_p}}
+      {{profile_form.as_p}}
+      <input type="submit" value="Register">
+  </form>
+
+  {% endif %}
+
+</div>
+
+{% endblock %}
